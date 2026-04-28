@@ -1,0 +1,16 @@
+{
+  "name": "agent-skills",
+  "owner": {
+    "name": "Moloco MCM"
+  },
+  "metadata": {
+    "description": "Claude Code skills for MCM partner integrations"
+  },
+  "plugins": [
+    {
+      "name": "ad-preview-template",
+      "source": "./plugins/ad-preview-template",
+      "description": "Generate valid HTML ad preview templates for MCM Sponsored Display and Sponsored Brands"
+    }
+  ]
+}
