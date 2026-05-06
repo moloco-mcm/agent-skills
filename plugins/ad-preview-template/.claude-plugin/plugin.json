@@ -1,0 +1,19 @@
+{
+  "name": "ad-preview-template",
+  "version": "0.1.0",
+  "description": "Generate valid HTML ad preview templates for MCM Sponsored Display and Sponsored Brands",
+  "author": {
+    "name": "Moloco"
+  },
+  "homepage": "https://github.com/moloco-mcm/agent-skills",
+  "repository": "https://github.com/moloco-mcm/agent-skills",
+  "license": "Apache-2.0",
+  "keywords": [
+    "mcm",
+    "moloco",
+    "ad-preview",
+    "template",
+    "sponsored-display",
+    "sponsored-brands"
+  ]
+}
