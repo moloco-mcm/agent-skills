@@ -11,6 +11,7 @@ A marketplace and plugin host. Each skill is packaged as its own plugin under `p
 | Skill | Description |
 | --- | --- |
 | [`ad-preview-template`](plugins/ad-preview-template) | Generate valid HTML ad preview templates for MCM Sponsored Display and Sponsored Brands. |
+| [`catalog-feed`](plugins/catalog-feed) | Convert a product catalog into Moloco MCM's catalog feed format (SSPI / MSPI / Delivery) and validate it before submission. |
 
 ## Install
 
@@ -28,6 +29,7 @@ The skill is auto-detected on the next session.
 Reference the relevant `SKILL.md` directly:
 
 - [`plugins/ad-preview-template/skills/ad-preview-template/SKILL.md`](plugins/ad-preview-template/skills/ad-preview-template/SKILL.md)
+- [`plugins/catalog-feed/skills/catalog-feed/SKILL.md`](plugins/catalog-feed/skills/catalog-feed/SKILL.md)
 
 ## Repository layout
 
