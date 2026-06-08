@@ -72,7 +72,7 @@ These are the exact value-format rules the validator enforces. Most rejected fee
 - **`business_type`** — `;`-delimited, each segment ≤100 chars.
 - **`video_id`** — `;`-delimited, up to 50 IDs, each ≤128 chars.
 
-Supported currencies: USD, KRW, JPY, EUR, GBP, SEK, INR, THB, IDR, CNY, CAD, RUB, BRL, SGD, HKD, AUD, PLN, DKK, VND, MYR, PHP, TRY, VES, AED.
+Supported currencies (as of this writing — see the docs for the current full list): USD, KRW, JPY, EUR, GBP, SEK, INR, THB, IDR, CNY, CAD, RUB, BRL, SGD, HKD, AUD, PLN, DKK, VND, MYR, PHP, TRY, VES, AED.
 
 ### Construction guidelines
 
@@ -161,3 +161,14 @@ ITEM_XYZ,seller_abc,"Example Seller",35,30,2025-04-29T14:50:00+09:00,in_stock
 id,title,image_link,seller_id,seller_title,average_order_value,category,delivery_fee_avg,availability
 STORE_007,"Example Restaurant",https://example.com/img/store007.jpg,seller_d7,Example Restaurant,28000,Korean>Stew;Intl>Thai,3500,in_stock
 ```
+
+## Sources
+
+This skill is derived from Moloco's public catalog documentation and the Catalog Feed Validator. The validator is the authoritative check — when in doubt, validate against it. If any of these pages change, re-check the affected section here.
+
+- Overview & feed types: <https://mcm-docs.moloco.com/docs/catalog-feed>, <https://mcm-docs.moloco.com/docs/sspi-vs-mspi>
+- Field specifications: <https://mcm-docs.moloco.com/docs/sspi-catalog-feed-specification>, <https://mcm-docs.moloco.com/docs/mspi-catalog-feed-specification>
+- Construction & validation: <https://mcm-docs.moloco.com/docs/catalog-construction-guidelines>, <https://mcm-docs.moloco.com/docs/catalog-feed-validator>
+- Delivery to Moloco: <https://mcm-docs.moloco.com/docs/catalog-feed-integration>
+- Third-party feeds: <https://mcm-docs.moloco.com/docs/third-party-catalog-feeds>
+- Field relevance & filtering: <https://mcm-docs.moloco.com/docs/how-mcm-uses-catalog-fields-for-relevance-and-filtering>
