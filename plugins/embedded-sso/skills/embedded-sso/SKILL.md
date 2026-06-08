@@ -142,3 +142,11 @@ Field rules:
 7. **URL-safe base64** — use standard base64; the server expects it.
 8. **`PLATFORM_USER`** — dead role, rejected server-side.
 9. **`platform_id` casing** — send it the same way every time; it is signed as-sent.
+
+## Sources
+
+This skill is derived from Moloco's public SSO examples and documentation. The `sso-examples` repo is the canonical reference — match its canonical-message field order exactly. If any of these change, re-check the affected section here.
+
+- Reference implementations (Node / Go / Java / Ruby): <https://github.com/moloco-mcm/sso-examples>
+- SSO secret & credential management: <https://mcm-docs.moloco.com/docs/api-and-sso-credential-management>
+- SAML portal login (the other "SSO" — out of scope for this skill): <https://mcm-docs.moloco.com/docs/sso-mfa>
