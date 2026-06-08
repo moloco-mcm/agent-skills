@@ -11,6 +11,11 @@
       "name": "ad-preview-template",
       "source": "./plugins/ad-preview-template",
       "description": "Generate valid HTML ad preview templates for MCM Sponsored Display and Sponsored Brands"
+    },
+    {
+      "name": "embedded-sso",
+      "source": "./plugins/embedded-sso",
+      "description": "Generate signed Embedded SSO URLs to authenticate your users into Moloco MCM's embedded Campaign Manager"
     }
   ]
 }

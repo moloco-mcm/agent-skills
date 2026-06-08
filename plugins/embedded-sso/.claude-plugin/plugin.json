@@ -1,0 +1,19 @@
+{
+  "name": "embedded-sso",
+  "version": "0.1.0",
+  "description": "Generate signed Embedded SSO URLs to authenticate your users into Moloco MCM's embedded Campaign Manager",
+  "author": {
+    "name": "Moloco"
+  },
+  "homepage": "https://github.com/moloco-mcm/agent-skills",
+  "repository": "https://github.com/moloco-mcm/agent-skills",
+  "license": "Apache-2.0",
+  "keywords": [
+    "mcm",
+    "moloco",
+    "sso",
+    "embedded-sso",
+    "campaign-manager",
+    "hmac"
+  ]
+}
