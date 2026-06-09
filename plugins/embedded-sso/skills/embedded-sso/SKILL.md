@@ -1,6 +1,6 @@
 ---
 name: embedded-sso
-description: Generate signed Embedded SSO URLs that authenticate your platform's users into Moloco MCM's embedded Campaign Manager. Use when implementing the HMAC-SHA256 signed-URL handoff (the sso-examples flow), constructing the /sso URL, or debugging signature mismatches. Not for SAML portal login.
+description: Generate signed Embedded SSO URLs that authenticate your platform's users into Moloco MCM's embedded Campaign Manager. Use when implementing the HMAC-SHA256 signed-URL handoff (the sso-examples flow), constructing the /sso URL, or debugging signature mismatches.
 ---
 
 # MCM Embedded SSO
@@ -8,18 +8,6 @@ description: Generate signed Embedded SSO URLs that authenticate your platform's
 You are helping a partner developer implement **Embedded SSO** for Moloco MCM. Embedded SSO lets a partner embed Moloco's RMP Campaign Manager inside their own product and seamlessly sign their own users into it — no separate Moloco password. The partner's backend signs a URL describing the user with a shared secret; Moloco verifies the signature, provisions or looks up the user, and loads the embedded Campaign Manager already authenticated.
 
 This is implementable in **any language** with an HMAC-SHA256 library. The official `moloco-mcm/sso-examples` repo has reference implementations in Node, Go, Java, and Ruby.
-
-## Scope: Embedded SSO vs SAML
-
-There are two unrelated things called "SSO" at Moloco. This skill covers **Embedded SSO only**.
-
-| | **Embedded SSO** (this skill) | **SAML 2.0 SSO** (not this skill) |
-|---|---|---|
-| Purpose | Embed Campaign Manager into a partner platform and sign in the partner's own users | Corporate IdP login for human users of the standalone portal |
-| Mechanism | HMAC-SHA256-signed `/sso?...` URL | SAML assertion from Okta / Entra ID / OneLogin |
-| Who signs in | An end user of the **partner's** platform | A Moloco-platform employee |
-
-If the goal is corporate IdP login to the standalone portal, that is SAML — see `mcm-docs.moloco.com/docs/sso-mfa`, not this skill.
 
 ## How it works
 
@@ -149,4 +137,3 @@ This skill is derived from Moloco's public SSO examples and documentation. The `
 
 - Reference implementations (Node / Go / Java / Ruby): <https://github.com/moloco-mcm/sso-examples>
 - SSO secret & credential management: <https://mcm-docs.moloco.com/docs/api-and-sso-credential-management>
-- SAML portal login (the other "SSO" — out of scope for this skill): <https://mcm-docs.moloco.com/docs/sso-mfa>
