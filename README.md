@@ -11,6 +11,7 @@ A marketplace and plugin host. Each skill is packaged as its own plugin under `p
 | Skill | Description |
 | --- | --- |
 | [`ad-preview-template`](plugins/ad-preview-template) | Generate valid HTML ad preview templates for MCM Sponsored Display and Sponsored Brands. |
+| [`embedded-sso`](plugins/embedded-sso) | Generate signed Embedded SSO URLs to authenticate your users into Moloco MCM's embedded Campaign Manager. |
 
 ## Install
 
@@ -28,6 +29,7 @@ The skill is auto-detected on the next session.
 Reference the relevant `SKILL.md` directly:
 
 - [`plugins/ad-preview-template/skills/ad-preview-template/SKILL.md`](plugins/ad-preview-template/skills/ad-preview-template/SKILL.md)
+- [`plugins/embedded-sso/skills/embedded-sso/SKILL.md`](plugins/embedded-sso/skills/embedded-sso/SKILL.md)
 
 ## Repository layout
 
