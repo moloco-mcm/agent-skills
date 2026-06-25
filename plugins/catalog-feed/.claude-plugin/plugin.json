@@ -1,0 +1,20 @@
+{
+  "name": "catalog-feed",
+  "version": "0.1.0",
+  "description": "Convert a product catalog into Moloco MCM's catalog feed format (SSPI / MSPI / Delivery) and validate it before submission",
+  "author": {
+    "name": "Moloco"
+  },
+  "homepage": "https://github.com/moloco-mcm/agent-skills",
+  "repository": "https://github.com/moloco-mcm/agent-skills",
+  "license": "Apache-2.0",
+  "keywords": [
+    "mcm",
+    "moloco",
+    "catalog",
+    "catalog-feed",
+    "sspi",
+    "mspi",
+    "validation"
+  ]
+}

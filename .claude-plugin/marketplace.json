@@ -11,6 +11,11 @@
       "name": "ad-preview-template",
       "source": "./plugins/ad-preview-template",
       "description": "Generate valid HTML ad preview templates for MCM Sponsored Display and Sponsored Brands"
+    },
+    {
+      "name": "catalog-feed",
+      "source": "./plugins/catalog-feed",
+      "description": "Convert a product catalog into Moloco MCM's catalog feed format (SSPI / MSPI / Delivery) and validate it before submission"
     }
   ]
 }
