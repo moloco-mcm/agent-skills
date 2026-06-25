@@ -40,7 +40,7 @@ name
 nonce
 path
 platform_id
-role                      # "" when EMPTY_ROLE
+role                      # "" if no role
 timestamp                 # Unix seconds, as a string
 version                   # "1.1.0"
 ```
@@ -56,7 +56,7 @@ Use version `1.1.0`. (A legacy `1.0.0` exists with a different, shorter field se
 3. Build the canonical string = the 14 fields above joined with `\n`, using `""` for absent fields and `";"`-join for `ad_account_ids`.
 4. `signature = base64(HMAC_SHA256(canonical_string, sso_secret))`.
 5. URL-encode every query param and assemble `{baseUrl}/sso?...&signature=...`. Send `ad_account_ids` as repeated query params (`ad_account_ids=a&ad_account_ids=b`), even though they are `;`-joined in the signature.
-6. Redirect the browser to that URL **within 5 minutes** of generating `timestamp`.
+6. Redirect the browser to that URL promptly — the server validates `timestamp` against a **±5-minute window** around its own clock (see [What Moloco verifies](#what-moloco-verifies)).
 
 Reference (Node, from `moloco-mcm/sso-examples` — Go / Java / Ruby are 1:1 equivalents):
 
@@ -86,20 +86,18 @@ const signature = createHmac("sha256", ssoSecret).update(message).digest("base64
 
 ## Roles and targeting
 
-Allowed roles: `AD_ACCOUNT_OWNER`, `AD_ACCOUNT_USER`, `AD_ACCOUNT_VIEWER`, `AD_ACCOUNT_AGENCY`, `AD_MANAGER_ACCOUNT_OWNER`, `AD_MANAGER_ACCOUNT_USER`, and `EMPTY_ROLE` (sign `role` as `""`).
-
-> `PLATFORM_USER` is deprecated and **rejected** by the server, even though it appears in some older examples. Do not use it.
+Role values: `AD_ACCOUNT_OWNER`, `AD_ACCOUNT_USER`, `AD_ACCOUNT_VIEWER`, `AD_ACCOUNT_AGENCY`, `AD_MANAGER_ACCOUNT_OWNER`, `AD_MANAGER_ACCOUNT_USER`. To grant no role, send `role` as an empty string `""` (the reference implementations use the `role || ""` fallback).
 
 | Scenario | Role(s) | Target field | `path` |
 |---|---|---|---|
 | Single ad account | `AD_ACCOUNT_OWNER` / `_USER` / `_VIEWER` | `ad_account_id` | `/embed/sponsored-ads/cm/a/{adAccountId}` |
-| Agency (multiple accounts) | `AD_ACCOUNT_AGENCY` | `ad_account_ids` (max 20) | `/embed/sponsored-ads` |
+| Agency (multiple accounts) | `AD_ACCOUNT_AGENCY` | `ad_account_ids` | `/embed/sponsored-ads` |
 | Ad manager account | `AD_MANAGER_ACCOUNT_OWNER` / `_USER` | `ad_manager_account_id` | `/embed/sponsored-ads/cm/ama/{adManagerAccountId}` |
 
 Field rules:
 - `ad_account_id` and `ad_account_ids` cannot be used together.
 - Ad manager roles use `ad_manager_account_id` and must not send `ad_account_id` / `ad_account_ids`.
-- For `AD_ACCOUNT_AGENCY`, all listed ad accounts must already exist (max 20).
+- For `AD_ACCOUNT_AGENCY`, all listed ad accounts must already exist. A server-side limit applies to the number of accounts in `ad_account_ids` — confirm the current cap with your account manager.
 
 ## Display options
 
@@ -117,7 +115,7 @@ Field rules:
 1. Required fields and role/version rules.
 2. **Timestamp freshness** — rejected if more than ±5 minutes from Moloco server time.
 3. **Signature** — recomputed from the canonical message and compared; mismatch → permission denied.
-4. **Nonce** — anti-replay; reusing a nonce for an existing user within the window is rejected.
+4. **Nonce** — anti-replay; reusing a nonce is rejected.
 
 ## Common pitfalls
 
@@ -128,8 +126,7 @@ Field rules:
 5. **Stale or pre-generated URLs** — the timestamp must be within ±5 minutes; generate the URL at request time.
 6. **Nonce reuse** — generate a fresh nonce every request.
 7. **URL-safe base64** — use standard base64; the server expects it.
-8. **`PLATFORM_USER`** — dead role, rejected server-side.
-9. **`platform_id` casing** — send it the same way every time; it is signed as-sent.
+8. **`platform_id` casing** — send it the same way every time; it is signed as-sent.
 
 ## Sources
 
